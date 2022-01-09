@@ -76,7 +76,7 @@ namespace UTTT.Ejemplo.Persona
             }
             catch (Exception _e)
             {
-                this.showMessage("Ha ocurrido un problema al agregar");
+                this.showMessage("Ha ocurrido un problema al agregar el usuario");
             }
         }
 
