@@ -79,7 +79,6 @@ namespace UTTT.Ejemplo.Persona
                         this.txtAPaterno.Text = this.baseEntity.strAPaterno;
                         this.txtAMaterno.Text = this.baseEntity.strAMaterno;
                         this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
-                        this.txtCURP.Text = this.baseEntity.strCurp;
                         this.setItem(ref this.ddlSexo, baseEntity.CatSexo.strValor);
                     }                
                 }
@@ -105,7 +104,6 @@ namespace UTTT.Ejemplo.Persona
                     persona.strNombre = this.txtNombre.Text.Trim();
                     persona.strAMaterno = this.txtAMaterno.Text.Trim();
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
-                    persona.strCurp = this.txtCURP.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
                     dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
                     dcGuardar.SubmitChanges();
@@ -120,7 +118,6 @@ namespace UTTT.Ejemplo.Persona
                     persona.strNombre = this.txtNombre.Text.Trim();
                     persona.strAMaterno = this.txtAMaterno.Text.Trim();
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
-                    persona.strCurp = this.txtCURP.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
                     dcGuardar.SubmitChanges();
                     this.showMessage("El registro se edito correctamente.");
