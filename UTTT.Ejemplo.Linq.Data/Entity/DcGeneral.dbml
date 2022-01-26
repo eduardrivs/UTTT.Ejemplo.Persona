@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBPersona" Class="DcGeneralDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DBPersona.mssql.somee.com;Initial Catalog=DBPersona;User ID=EduardoRivas_SQLLogin_1" SettingsObjectName="UTTT.Ejemplo.Linq.Data.Properties.Settings" SettingsPropertyName="DBPersonaConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DBPersona.mssql.somee.com;Initial Catalog=DBPersona;Persist Security Info=True;User ID=EduardoRivas_SQLLogin_1" SettingsObjectName="UTTT.Ejemplo.Linq.Data.Properties.Settings" SettingsPropertyName="DBPersonaConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CatSexo" Member="CatSexo">
     <Type Name="CatSexo">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
