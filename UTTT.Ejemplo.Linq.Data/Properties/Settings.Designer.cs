@@ -26,8 +26,28 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DBPersona.mssql.somee.com;Initial Catalog=DBPersona;User ID=EduardoRi" +
-            "vas_SQLLogin_1;Password=f8tc2ie7xs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ASPIRE-A515-51G;Initial Catalog=Persona;Integrated Security=True")]
+        public string PersonaConnectionString1 {
+            get {
+                return ((string)(this["PersonaConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("data source=ASPIRE-A515-51G\\Eduar;\ndatabase=Persona;\npersist security info=True;")]
+        public string PersonaConnectionString {
+            get {
+                return ((string)(this["PersonaConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DBPersona.mssql.somee.com;Initial Catalog=DBPersona;Persist Security " +
+            "Info=True;User ID=EduardoRivas_SQLLogin_1;Password=f8tc2ie7xs")]
         public string DBPersonaConnectionString {
             get {
                 return ((string)(this["DBPersonaConnectionString"]));
