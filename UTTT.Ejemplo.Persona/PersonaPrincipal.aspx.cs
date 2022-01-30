@@ -21,6 +21,7 @@ namespace UTTT.Ejemplo.Persona
         #region Variables
 
         private SessionManager session = new SessionManager();
+        public static System.Text.StringBuilder _ultimoError;
 
         #endregion
 
@@ -28,6 +29,23 @@ namespace UTTT.Ejemplo.Persona
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                // Place this code to the Main() method in your application.
+                AppDomain.CurrentDomain.FirstChanceException += (senderr, ee) => {
+                    System.Text.StringBuilder msg = new System.Text.StringBuilder();
+                    msg.AppendLine(ee.Exception.GetType().FullName);
+                    msg.AppendLine(ee.Exception.Message);
+                    System.Diagnostics.StackTrace st = new System.Diagnostics.StackTrace();
+                    msg.AppendLine(st.ToString());
+                    msg.AppendLine();
+                    PersonaPrincipal._ultimoError = msg;
+                };
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
             try
             {
                 Response.Buffer = true;
@@ -171,7 +189,7 @@ namespace UTTT.Ejemplo.Persona
                     c => c.id == _idPersona);
                 dcDelete.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().DeleteOnSubmit(persona);
                 dcDelete.SubmitChanges();
-                this.showMessage("El registro se agrego correctamente.");
+                this.showMessage("El registro se elimino correctamente.");
                 this.DataSourcePersona.RaiseViewChanged();                
             }
             catch (Exception _e)

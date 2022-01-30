@@ -97,6 +97,10 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
+                if (!Page.IsValid)
+                {
+                    return;
+                }
                 DataContext dcGuardar = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
                 if (this.idPersona == 0)
@@ -107,6 +111,16 @@ namespace UTTT.Ejemplo.Persona
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
                     persona.strCurp = this.txtCURP.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+
+                    String mensaje = String.Empty;
+                    //validacion de datos correctos desde codigo
+                    if(!this.validacion(persona, ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+
                     dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
                     dcGuardar.SubmitChanges();
                     this.showMessage("El registro se agrego correctamente.");
@@ -181,6 +195,94 @@ namespace UTTT.Ejemplo.Persona
             }
             _control.Items.FindByText(_value).Selected = true;
         }
+
+        #region validación codigo
+
+        /// <summary>
+        /// Valida datos básicos
+        /// </summary>
+        /// <param name="_persona"></param>
+        /// <param name="_mensaje"></param>
+        /// <returns></returns>
+
+        public bool validacion(UTTT.Ejemplo.Linq.Data.Entity.Persona _persona, ref String _mensaje)
+        {
+            if(_persona.idCatSexo == -1)
+            {
+                _mensaje = "Seleccione Masculino o Femenino";
+                return false;
+            }
+
+            int i = 0;
+            //Verifica si un texto es un número
+            if(int.TryParse(_persona.strClaveUnica, out i) == false)
+            {
+                _mensaje = "La clave unica no es un número";
+                return false;
+            }
+
+            ///validamos un numero
+            ///string, saber que es un numero
+            ///99 y 1000
+            if(int.Parse(_persona.strClaveUnica) < 100 || int.Parse(_persona.strClaveUnica) > 999)
+            {
+                _mensaje = "La clave unica esta fuera de rango";
+                return false;
+            }
+
+            if (_persona.strNombre.Equals(String.Empty))
+            {
+                _mensaje = "El nombre esta vacio";
+                return false;
+            }
+
+            if(_persona.strNombre.Length > 50)
+            {
+                _mensaje = "Los caracteres permitidos para nombre rebasan lo permitido (50 caracteres)";
+                return false;
+            }
+
+            if (_persona.strAPaterno.Equals(String.Empty))
+            {
+                _mensaje = "El apellido paterno esta vacio";
+                return false;
+            }
+
+            if (_persona.strAPaterno.Length > 50)
+            {
+                _mensaje = "Los caracteres permitidos para apellido paterno rebasan lo permitido (50 caracteres)";
+                return false;
+            }
+
+            if (_persona.strAMaterno.Equals(String.Empty))
+            {
+                _mensaje = "El apellido materno esta vacio";
+                return false;
+            }
+
+            if (_persona.strAMaterno.Length > 50)
+            {
+                _mensaje = "Los caracteres permitidos para apellido materno rebasan lo permitido (50 caracteres)";
+                return false;
+            }
+
+            if (_persona.strCurp.Equals(String.Empty))
+            {
+                _mensaje = "La CURP no puede estar vacia";
+                return false;
+            }
+
+            if(_persona.strCurp.Length > 18 || _persona.strCurp.Length<18)
+            {
+                _mensaje = "La CURP no cumple con los requisitos solicitados";
+                return false;
+            }
+
+            return true;
+
+        }
+
+        #endregion
 
         #endregion
     }
