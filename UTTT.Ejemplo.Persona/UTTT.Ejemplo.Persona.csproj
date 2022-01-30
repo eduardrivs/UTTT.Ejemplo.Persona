@@ -77,10 +77,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="controlformato.css" />
+    <Content Include="css\ErrorPageStyles.css" />
+    <Content Include="css\syleError.css" />
     <Content Include="Default.aspx" />
     <Content Include="direccion.aspx" />
     <Content Include="DireccionExtraManager.aspx" />
     <Content Include="DireccionManager.aspx" />
+    <Content Include="ErrorPage.aspx" />
+    <Content Include="ErrorPage2.aspx" />
     <Content Include="Images\delrecord_16x16.png" />
     <Content Include="Images\editrecord_16x16.png" />
     <Content Include="Images\Pixir-1-1-300x181.png" />
@@ -131,6 +135,21 @@
     <Compile Include="DireccionManager.aspx.designer.cs">
       <DependentUpon>DireccionManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmailManager.cs" />
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage2.aspx.cs">
+      <DependentUpon>ErrorPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage2.aspx.designer.cs">
+      <DependentUpon>ErrorPage2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="javaScripPage.aspx.cs">
       <DependentUpon>javaScripPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -163,7 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="css\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="paginaMaster.Master" />
