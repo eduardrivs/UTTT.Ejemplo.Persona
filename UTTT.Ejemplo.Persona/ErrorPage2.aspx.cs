@@ -11,7 +11,7 @@ namespace UTTT.Ejemplo.Persona
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            EmailManager correo = new EmailManager("19300671@uttt.edu.mx");
+            //EmailManager correo = new EmailManager("19300671@uttt.edu.mx");
             //correo.enviarMensaje(Server.GetLastError().InnerException+"\nError de prueba");
         }
     }
