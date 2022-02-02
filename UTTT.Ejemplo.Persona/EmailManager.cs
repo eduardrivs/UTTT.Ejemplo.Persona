@@ -23,7 +23,7 @@ namespace UTTT.Ejemplo.Persona
 
         public void enviarMensaje(String mensaje)
         {
-            var fromAddress = new MailAddress("eduardo.rivas.uttt@gmail.com", "Eduardo Rivas");
+            var fromAddress = new MailAddress("eduardo.rivas.uttt@gmail.com");
             var toAddress = new MailAddress(_eMail);
             const string fromPassword = "Uurxi!5b.F8tAYQ";
             const string subject = "ERROR en sitio http://www.EduardoRivas.somee.com";

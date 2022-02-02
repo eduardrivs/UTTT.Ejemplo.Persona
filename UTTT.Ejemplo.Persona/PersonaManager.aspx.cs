@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using System.Collections;
 using UTTT.Ejemplo.Persona.Control;
 using UTTT.Ejemplo.Persona.Control.Ctrl;
+using System.Text.RegularExpressions;
 
 #endregion
 
@@ -97,6 +98,17 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
+                if (this.txtClaveUnica.Text.Trim().Equals("") && this.txtNombre.Text.Trim().Equals("") && this.txtAPaterno.Text.Trim().Equals("") && this.txtAMaterno.Text.Trim().Equals("") &&
+                this.txtCURP.Text.Trim().Equals("") && int.Parse(this.ddlSexo.Text).Equals(-1))
+                {
+                    this.Response.Redirect("~/PersonaPrincipal.aspx", false);
+                }
+                else
+                {
+                    btnAceptar.ValidationGroup = "gvSave";
+                    Page.Validate("gvSave");
+                }
+
                 if (!Page.IsValid)
                 {
                     return;
@@ -145,6 +157,11 @@ namespace UTTT.Ejemplo.Persona
             {
                 this.showMessageException(_e.Message);
             }
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -242,6 +259,12 @@ namespace UTTT.Ejemplo.Persona
                 return false;
             }
 
+            if (!Regex.IsMatch(_persona.strNombre, @"^[a-zA-Z]+$"))
+            {
+                _mensaje = "Los caracteres insertados para 'Nombre' no son permitidos";
+                return false;
+            }
+
             if (_persona.strAPaterno.Equals(String.Empty))
             {
                 _mensaje = "El apellido paterno esta vacio";
@@ -254,6 +277,12 @@ namespace UTTT.Ejemplo.Persona
                 return false;
             }
 
+            if (!Regex.IsMatch(_persona.strAPaterno, @"^[a-zA-Z]+$"))
+            {
+                _mensaje = "Los caracteres insertados para 'Apellido Paterno' no son permitidos";
+                return false;
+            }
+
             if (_persona.strAMaterno.Equals(String.Empty))
             {
                 _mensaje = "El apellido materno esta vacio";
@@ -263,6 +292,12 @@ namespace UTTT.Ejemplo.Persona
             if (_persona.strAMaterno.Length > 50)
             {
                 _mensaje = "Los caracteres permitidos para apellido materno rebasan lo permitido (50 caracteres)";
+                return false;
+            }
+
+            if (!Regex.IsMatch(_persona.strAMaterno, @"^[a-zA-Z]+$"))
+            {
+                _mensaje = "Los caracteres insertados para 'Apellido Materno' no son permitidos";
                 return false;
             }
 
