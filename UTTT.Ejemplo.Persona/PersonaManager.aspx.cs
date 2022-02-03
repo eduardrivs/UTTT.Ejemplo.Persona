@@ -148,6 +148,16 @@ namespace UTTT.Ejemplo.Persona
                     persona.strAPaterno = this.txtAPaterno.Text.Trim();
                     persona.strCurp = this.txtCURP.Text.Trim();
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+
+                    String mensaje = String.Empty;
+                    //validacion de datos correctos desde codigo
+                    if (!this.validacion(persona, ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+
                     dcGuardar.SubmitChanges();
                     this.showMessage("El registro se edito correctamente.");
                     this.Response.Redirect("~/PersonaPrincipal.aspx", false);
@@ -157,11 +167,6 @@ namespace UTTT.Ejemplo.Persona
             {
                 this.showMessageException(_e.Message);
             }
-        }
-
-        private void BtnAceptar_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -184,7 +189,7 @@ namespace UTTT.Ejemplo.Persona
                 Expression<Func<CatSexo, bool>> predicateSexo = c => c.id == idSexo;
                 predicateSexo.Compile();
                 List<CatSexo> lista = dcGlobal.GetTable<CatSexo>().Where(predicateSexo).ToList();
-                CatSexo catTemp = new CatSexo();            
+                CatSexo catTemp = new CatSexo();
                 this.ddlSexo.DataTextField = "strValor";
                 this.ddlSexo.DataValueField = "id";
                 this.ddlSexo.DataSource = lista;
@@ -259,9 +264,15 @@ namespace UTTT.Ejemplo.Persona
                 return false;
             }
 
-            if (!Regex.IsMatch(_persona.strNombre, @"^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(_persona.strNombre, @"^[a-zA-ZñÑáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙüïÏÜ ]+$"))
             {
                 _mensaje = "Los caracteres insertados para 'Nombre' no son permitidos";
+                return false;
+            }
+
+            if(_persona.strNombre.Length < 3)
+            {
+                _mensaje = "El nombre debe tener 3 o más caracteres";
                 return false;
             }
 
@@ -277,9 +288,15 @@ namespace UTTT.Ejemplo.Persona
                 return false;
             }
 
-            if (!Regex.IsMatch(_persona.strAPaterno, @"^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(_persona.strAPaterno, @"^[a-zA-ZñÑáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙüïÏÜ ]+$"))
             {
                 _mensaje = "Los caracteres insertados para 'Apellido Paterno' no son permitidos";
+                return false;
+            }
+
+            if (_persona.strAPaterno.Length < 3)
+            {
+                _mensaje = "El Apellido Paterno debe tener 3 o más caracteres";
                 return false;
             }
 
@@ -295,9 +312,15 @@ namespace UTTT.Ejemplo.Persona
                 return false;
             }
 
-            if (!Regex.IsMatch(_persona.strAMaterno, @"^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(_persona.strAMaterno, @"^[a-zA-ZñÑáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙüïÏÜ ]+$"))
             {
                 _mensaje = "Los caracteres insertados para 'Apellido Materno' no son permitidos";
+                return false;
+            }
+
+            if (_persona.strAMaterno.Length < 3)
+            {
+                _mensaje = "El Apellido Materno debe tener 3 o más caracteres";
                 return false;
             }
 
