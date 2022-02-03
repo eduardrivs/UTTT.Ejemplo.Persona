@@ -22,7 +22,7 @@
             //valida quer solo ingreses letras y algunos caracteres especiales
             key = e.keyCode || e.which;
             tecla = String.fromCharCode(key).toLowerCase();
-            letras = "áéíóúabcdefghijklmnñopqrstuvwxyz ";
+            letras = "áéíóúàèìòùüïabcdefghijklmnñopqrstuvwxyz ";
             especiales = "8-37-39-46";
             tecla_especial = false;
             for (var i in especiales) {
@@ -96,8 +96,7 @@
                 
         <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sexo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
             <asp:DropDownList ID="ddlSexo" runat="server" 
-                Height="25px" Width="253px" 
-                onselectedindexchanged="ddlSexo_SelectedIndexChanged">
+                Height="25px" Width="253px">
             </asp:DropDownList>
             &nbsp;&nbsp;&nbsp;
             <asp:RequiredFieldValidator ID="rfvSexo" runat="server" ErrorMessage="&quot;El sexo es obligatorio&quot;" ControlToValidate="ddlSexo" InitialValue="-1" ValidationGroup="gvSave"></asp:RequiredFieldValidator>
