@@ -82,7 +82,7 @@ namespace UTTT.Ejemplo.Persona
                         this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
                         this.txtCURP.Text = this.baseEntity.strCurp;
                         this.setItem(ref this.ddlSexo, baseEntity.CatSexo.strValor);
-                    }              
+                    }                
                 }
 
             }
