@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonaPrincipal.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PersonaPrincipal" Debug="false" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonaPrincipal.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PersonaPrincipal" debug="false" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +11,7 @@
     <!-- Pagina web -->
     <div class="m-5">
         <form runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
             <div class="text-center">
                 <h1 class="mx-auto">Persona</h1>
             </div>
@@ -24,7 +25,8 @@
                                 <label for="txtNombre" class="col-form-label">Nombre:</label>
                             </div>
                             <div class="col-7">
-                                <asp:TextBox ID="txtNombre" class="form-control" runat="server" Width="100%" ViewStateMode="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="txtNombre" class="form-control" runat="server" Width="100%" OnTextChanged="buscarTextBox" AutoPostBack="true"></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" CompletionInterval="100" EnableCaching="false" MinimumPrefixLength="2" ServiceMethod="onTxtNombreTextChange" TargetControlID="txtNombre"></ajaxToolkit:AutoCompleteExtender>
                             </div>
                         </div>
                         <div class="row col-md-7 mt-2">
