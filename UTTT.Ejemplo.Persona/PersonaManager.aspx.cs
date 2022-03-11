@@ -72,7 +72,7 @@ namespace UTTT.Ejemplo.Persona
                     if (this.idPersona == 0)
                     {
                         this.lblAccion.Text = "Agregar";
-                        //CalendarExtender1.SelectedDate = DateTime.Now;
+                        CalendarExtender1.SelectedDate = DateTime.Now;
 
                         CatSexo catTemp = new CatSexo();
                         catTemp.id = -1;
@@ -90,7 +90,7 @@ namespace UTTT.Ejemplo.Persona
                         this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
                         this.txtCURP.Text = this.baseEntity.strCurp;
 
-                        //CalendarExtender1.SelectedDate = this.baseEntity.dteFechaNacimiento.Value.Date;
+                        CalendarExtender1.SelectedDate = this.baseEntity.dteFechaNacimiento.Value.Date;
 
                         this.ddlSexo.DataSource = lista;
                         this.ddlSexo.DataBind();
@@ -131,8 +131,8 @@ namespace UTTT.Ejemplo.Persona
                 }
 
                 //se obtiene la fehca de nacimiento
-                //string date = Request.Form[this.txtFechaNacimiento.UniqueID];
-                //DateTime fechaNacimiento = Convert.ToDateTime(date);
+                string date = Request.Form[this.txtFechaNacimiento.UniqueID];
+                DateTime fechaNacimiento = Convert.ToDateTime(date);
 
                 DataContext dcGuardar = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
@@ -146,7 +146,7 @@ namespace UTTT.Ejemplo.Persona
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
 
                     //asigna la fehca de nacimiento
-                    //persona.dteFechaNacimiento = fechaNacimiento;
+                    persona.dteFechaNacimiento = fechaNacimiento;
 
                     String mensaje = String.Empty;
                     int pos = 0;
@@ -199,7 +199,7 @@ namespace UTTT.Ejemplo.Persona
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
 
                     //asigna fechas de nacimento
-                    //persona.dteFechaNacimiento = fechaNacimiento;
+                    persona.dteFechaNacimiento = fechaNacimiento;
 
                     String mensaje = String.Empty;
                     int pos = 0;
