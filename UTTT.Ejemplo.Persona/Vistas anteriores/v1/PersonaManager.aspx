@@ -1,11 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PersonaManager.aspx.cs" Inherits="UTTT.Ejemplo.Persona.PersonaManager" Debug="false" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <title>Ejercicio Bootstrap</title>
     <script type="text/javascript">
         function validaNumeros(evt) {
@@ -47,25 +46,17 @@
             }
         }
     </script>
-
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-
 </head>
 <body>
-    <form runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-
-        <!-- Pagina web -->
-        <div class="mt-5 mb-5">
+    <!-- Pagina web -->
+    <div class="m-5">
+        <form runat="server">
+            <asp:ScriptManager ID="ScriptManager2" runat="server" EnablePageMethods="true"></asp:ScriptManager>
             <div class="text-center">
                 <h1 class="mx-auto">Persona</h1>
             </div>
             <!-- Tabla -->
-            <div class="mt-5 container-fluid">
+            <div class="row mt-5">
                 <div class="text-center">
                     <asp:Label ID="lblAccion" runat="server" Text="Accion" Font-Bold="True" class="mx-a"></asp:Label>
                 </div>
@@ -79,7 +70,7 @@
                             <label for="txtClaveUnica">Clave unica:</label>
                         </div>
                     </div>
-                    <div class="col-12 col-md-7 row">
+                    <div class="col-md-7 row">
                         <div class="col-md-4">
                             <asp:TextBox ID="txtClaveUnica" runat="server" Width="100%" ViewStateMode="Disabled" onkeypress="return validaNumeros(event);" pattern=".{1,3}" title="1 a 3 es la longitud que se permite ingresar"></asp:TextBox>
                         </div>
@@ -202,57 +193,15 @@
                 </div>
                 <div class="mt-2 row justify-content-center">
                     <div class="col-6 text-end">
-                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" ViewStateMode="Disabled" />
+                        <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" onclick="btnAceptar_Click" ViewStateMode="Disabled" />
                     </div>
                     <div class="col-6">
-                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" ViewStateMode="Disabled" />
+                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" onclick="btnCancelar_Click" ViewStateMode="Disabled" />
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-center text-white text-lg-start" style="position:fixed; left:0px; bottom:0px; width:100%">
-        <!-- Section: Social media -->
-        <section
-            class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <!-- Left -->
-            <div class="me-5 d-none d-lg-block">
-                <span>19300671 · Jose Eduardo Rivas Cuevas · 8IDGS</span>
-            </div>
-            <!-- Left -->
-
-            <!-- Right -->
-            <div class="row">
-                <div class="col-auto me-4">
-                    <a href="https://www.facebook.com/ed.rivas17/" class="text-reset"><i class="fab fa-facebook-f"></i></a>
-                </div>
-                <div class="col-auto me-4">
-                    <a href="https://twitter.com/EduardoRvas" class="text-reset"><i class="fab fa-twitter"></i></a>
-                </div>
-                <div class="col-auto me-4">
-                    <a href="https://www.instagram.com/eduardrivs/" class="text-reset"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="col-auto me-4">
-                    <a href="https://www.linkedin.com/in/eduardorivascuevas/" class="text-reset"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <div class="col-auto me-4 text-reset">
-                    <a href="https://github.com/eduardrivs" class="text-reset"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
-
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            Universidad Tecnologica de Tula Tepeji - Desarrollo Web Profesional
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-
+        </form>
+    </div>
 
     <!-- SCRIPTS -->
     <script src="Scripts/bootstrap.min.js" type="text/javascript"></script>

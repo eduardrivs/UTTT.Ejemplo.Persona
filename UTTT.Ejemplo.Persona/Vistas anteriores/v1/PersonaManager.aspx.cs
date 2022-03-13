@@ -13,7 +13,6 @@ using System.Collections;
 using UTTT.Ejemplo.Persona.Control;
 using UTTT.Ejemplo.Persona.Control.Ctrl;
 using System.Text.RegularExpressions;
-using System.Globalization;
 
 #endregion
 
@@ -133,10 +132,8 @@ namespace UTTT.Ejemplo.Persona
                 }
 
                 //se obtiene la fehca de nacimiento
-                //string date = Request.Form[this.txtFechaNacimiento.Text.ToString()];
-                string date = this.txtFechaNacimiento.Text.ToString();
-                //DateTime fechaNacimiento = Convert.ToDateTime(date);
-                DateTime fechaNacimiento = DateTime.Parse(date,CultureInfo.CreateSpecificCulture("es-MX"));
+                string date = Request.Form[this.txtFechaNacimiento.UniqueID];
+                DateTime fechaNacimiento = Convert.ToDateTime(date);
 
                 DataContext dcGuardar = new DcGeneralDataContext();
                 UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
@@ -150,7 +147,7 @@ namespace UTTT.Ejemplo.Persona
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
 
                     //asigna la fehca de nacimiento
-                    persona.dteFechaNacimiento = fechaNacimiento.Date;
+                    persona.dteFechaNacimiento = fechaNacimiento;
 
                     String mensaje = String.Empty;
                     int pos = 0;
@@ -203,7 +200,7 @@ namespace UTTT.Ejemplo.Persona
                     persona.idCatSexo = int.Parse(this.ddlSexo.Text);
 
                     //asigna fechas de nacimento
-                    persona.dteFechaNacimiento = fechaNacimiento.Date;
+                    persona.dteFechaNacimiento = fechaNacimiento;
 
                     String mensaje = String.Empty;
                     int pos = 0;
